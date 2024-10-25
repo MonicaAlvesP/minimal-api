@@ -11,7 +11,7 @@ namespace minimal_api.Dominio.Serviços
 
     public Administrador BuscaPorId(int id)
     {
-      return _contexto.Administradores.Where(v => v.Id == id).FirstOrDefault();
+      return _contexto.Administradores.Where(v => v.Id == id).FirstOrDefault()!;
     }
 
     public Administrador Incluir(Administrador administrador)
@@ -25,6 +25,10 @@ namespace minimal_api.Dominio.Serviços
     public Administrador Login(LoginDTO loginDTO)
     {
       var adm = _contexto.Administradores.Where(a => a.Email == loginDTO.Email && a.Senha == loginDTO.Senha).FirstOrDefault();
+      if (adm == null)
+      {
+        throw new Exception("Administrador não encontrado.");
+      }
       return adm;
     }
 
