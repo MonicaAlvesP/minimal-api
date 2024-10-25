@@ -57,7 +57,6 @@ app.MapGet("/administradores", ([FromQuery] int? pagina, IAdministradorServico a
       Id = adm.Id,
       Email = adm.Email,
       Perfil = adm.Perfil
-      // Perfil = (Perfil)Enum.Parse(typeof(Perfil), adm.Perfil)
     });
   }
   return Results.Ok(adms);
