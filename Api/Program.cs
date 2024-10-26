@@ -159,7 +159,7 @@ app.MapPost("/administradores", ([FromBody] AdministradorDTO AdministradorDTO, I
 {
   var validacao = new ErrosDeValidacao
   {
-    Mensagens = new()
+    Mensagens = new List<string>()
   };
 
   if (string.IsNullOrEmpty(AdministradorDTO.Email))
